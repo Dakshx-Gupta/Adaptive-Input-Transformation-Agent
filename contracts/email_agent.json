@@ -1,0 +1,15 @@
+{
+  "name": "email_agent",
+  "description": "Prepares and sends an email to a single recipient.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "recipient": {"type": "string", "format": "email", "description": "Recipient's email address"},
+      "subject": {"type": "string", "description": "Short email subject line"},
+      "body": {"type": "string", "description": "Full email body text"},
+      "tone": {"type": "string", "description": "e.g. professional, friendly, formal"}
+    },
+    "required": ["recipient", "subject", "body", "tone"],
+    "additionalProperties": false
+  }
+}
