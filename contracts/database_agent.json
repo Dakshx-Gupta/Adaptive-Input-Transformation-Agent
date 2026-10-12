@@ -1,0 +1,24 @@
+{
+  "name": "database_agent",
+  "description": "Prepares a database operation (insert, update or delete) on one table.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "operation":  {"type": "string", "enum": ["insert", "update", "delete"],
+                     "description": "The kind of operation."},
+      "table":      {"type": "string", "description": "Name of the table."},
+      "data":       {"type": "object",
+                     "description": "Column/value pairs to write. Empty object {} for delete."},
+      "conditions": {"type": "object",
+                     "description": "Column/value pairs identifying rows to affect. Empty object {} for insert."}
+    },
+    "required": ["operation", "table", "data", "conditions"],
+    "additionalProperties": false,
+    "allOf": [
+      {"if":   {"properties": {"operation": {"enum": ["update", "delete"]}}},
+       "then": {"properties": {"conditions": {"minProperties": 1}}}},
+      {"if":   {"properties": {"operation": {"enum": ["insert", "update"]}}},
+       "then": {"properties": {"data": {"minProperties": 1}}}}
+    ]
+  }
+}

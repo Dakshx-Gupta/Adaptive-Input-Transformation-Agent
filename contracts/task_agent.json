@@ -1,0 +1,19 @@
+{
+  "name": "task_agent",
+  "description": "Creates a task and assigns it to a person.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "task_name":   {"type": "string", "description": "Short title of the task."},
+      "assigned_to": {"type": "string", "x-verbatim": true,
+                      "description": "Name or email of the person responsible."},
+      "priority":    {"type": "string", "enum": ["low", "medium", "high"],
+                      "description": "Task priority."},
+      "due_date":    {"type": "string", "format": "date",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                      "description": "Due date in YYYY-MM-DD."}
+    },
+    "required": ["task_name", "assigned_to", "priority", "due_date"],
+    "additionalProperties": false
+  }
+}
