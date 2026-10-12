@@ -4,7 +4,8 @@
   "schema": {
     "type": "object",
     "properties": {
-      "recipient": {"type": "string", "format": "email", "description": "Recipient's email address"},
+      "recipient": {"type": "string", "format": "email", "x-verbatim": true,
+                    "description": "The recipient's email address."},
       "subject": {"type": "string", "description": "Short email subject line"},
       "body": {"type": "string", "description": "Full email body text"},
       "tone": {"type": "string", "description": "e.g. professional, friendly, formal"}

@@ -1,0 +1,29 @@
+{
+  "name": "calendar_agent",
+  "description": "Schedules a meeting on a calendar.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "title": {"type": "string", "description": "Meeting title."},
+      "attendees": {
+        "type": "array",
+        "items": {"type": "string", "format": "email"},
+        "description": "Email addresses of the attendees."
+      },
+      "start_date": {
+        "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+        "description": "Meeting date in YYYY-MM-DD."
+      },
+      "start_time": {
+        "type": "string", "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+        "description": "Start time in 24-hour HH:MM."
+      },
+      "duration_minutes": {
+        "type": "integer", "minimum": 5, "maximum": 480,
+        "description": "Length of the meeting in minutes."
+      }
+    },
+    "required": ["title", "attendees", "start_date", "start_time"],
+    "additionalProperties": false
+  }
+}
