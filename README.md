@@ -18,7 +18,7 @@ The adapter is **schema-driven**: there is one `adapt()` function, and no per-ag
 | Core pipeline (parse, normalise, validate, retry, structured errors) | Implemented, covered by 10 passing tests |
 | Four receiving agents (email, database, task, calendar) | Implemented as contract files, all demonstrated |
 | Tests and `demo.py` | Run **offline** using `FakeLLM` (scripted replies) |
-| **Live LLM extraction from messy text** | **Not included and not verified.** The project ships with no real LLM client. I could not get free API access to a model during the assignment, so the prompt has never been run against a real model. |
+| **Live LLM extraction from messy text** | **Not included and not verified.** The project ships with no real LLM client, so the prompt has never been run against a real model. |
 
 What this means in practice: the tests prove that the **pipeline around the LLM** behaves correctly (it rejects bad output, refuses to guess, retries within limits, and reports missing data). They do **not** prove how well any particular model reads a messy sentence. The prompt in `adapter/prompts.py` is a reasoned design, not one tuned against real model output.
 
