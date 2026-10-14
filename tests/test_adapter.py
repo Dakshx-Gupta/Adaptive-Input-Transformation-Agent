@@ -2,7 +2,6 @@ import json
 from adapter.adapter import adapt
 from adapter.contract import load_contract
 from adapter.llm_client import FakeLLM
-import json as _json
 from datetime import date
 from adapter.context import Context
 
@@ -96,7 +95,7 @@ def test_fourth_agent_calendar(ctx):
 def test_brand_new_contract_written_at_test_time(ctx, tmp_path):
         """A contract that did not exist when the adapter was written still works."""
         contract_file = tmp_path / "ticket_agent.json"
-        contract_file.write_text(_json.dumps({
+        contract_file.write_text(json.dumps({
             "name": "ticket_agent",
             "description": "Opens a support ticket.",
             "schema": {
